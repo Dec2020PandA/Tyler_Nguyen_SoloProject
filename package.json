@@ -1,0 +1,26 @@
+{
+  "name": "Tyler_Nguyen_SoloProject",
+  "version": "1.0.0",
+  "description": "Giving drink lovers an outlet to search for new drinks and try new things at home. PUrpose of this projet is to use a database containing an accessible list of different drinks with corresponding recipes/ingredients that users can fetch. This idea was inspired from a constant struggle of wanting to try new drinks but 1) not knowing exactly what to look for and 2) not knowing how to make new drinks. The goal is to have an interface that allows users to search for various drinks and filter out types by specific criteria, great for a pandemic ridden time right now to try different things and experiment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dec2020PandA/Tyler_Nguyen_SoloProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dec2020PandA/Tyler_Nguyen_SoloProject/issues"
+  },
+  "homepage": "https://github.com/Dec2020PandA/Tyler_Nguyen_SoloProject#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.4",
+    "nodemon": "^2.0.6"
+  }
+}
