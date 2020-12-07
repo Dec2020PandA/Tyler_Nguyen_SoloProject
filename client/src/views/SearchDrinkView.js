@@ -11,8 +11,9 @@ function SearchDrinkForm(props) {
   const [drink, setDrink] = useState("");
   return (
     <div>
+      <Typography variant='h3'>Search for a drink!</Typography>
       <form onSubmit={onSubmitHandler}>
-        <TextField value={drink} onInput={(e) => setDrink(e.target.value)} />
+        <TextField variant='outlined' value={drink} onInput={(e) => setDrink(e.target.value)} />
         <Typography>results</Typography>
         <Button type="submit">Search</Button>
       </form>

@@ -21,19 +21,24 @@ function LoginForm() {
       )
       .then((res) => {
         console.log(res.data);
-        navigate("/user/" + res.data.msg + "/search");
+        navigate("/search");
       })
       .catch((err) => console.log(err));
   };
   return (
     <div>
-      <Typography>Login</Typography>
+      <Typography variant="h3">Login</Typography>
       <form onSubmit={handleLogin}>
         <Typography>Email</Typography>
-        <TextField value={email} onInput={(e) => setEmail(e.target.value)} />
+        <TextField
+          variant="outlined"
+          value={email}
+          onInput={(e) => setEmail(e.target.value)}
+        />
 
         <Typography>Password</Typography>
         <TextField
+          variant="outlined"
           value={[password]}
           onInput={(e) => setPassword(e.target.value)}
         />

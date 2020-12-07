@@ -4,6 +4,7 @@ import { Link, navigate } from "@reach/router";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+
 function RegisterForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -38,7 +39,7 @@ function RegisterForm() {
   };
   return (
     <div>
-      <Typography>Register</Typography>
+      <Typography variant="h3">Register</Typography>
       <form onSubmit={handleRegistration}>
         <Typography>First Name</Typography>
         {/* popup for errors here */}
@@ -46,6 +47,7 @@ function RegisterForm() {
           <Typography>{errors.firstName.message}</Typography>
         ) : null}
         <TextField
+          variant="outlined"
           value={firstName}
           onInput={(e) => setFirstName(e.target.value)}
         />
@@ -54,25 +56,32 @@ function RegisterForm() {
           <Typography>{errors.lastName.message}</Typography>
         ) : null}
         <TextField
+          variant="outlined"
           value={lastName}
           onInput={(e) => setLastName(e.target.value)}
         />
 
         <Typography>Email</Typography>
         {errors.email ? <Typography>{errors.email.message}</Typography> : null}
-        <TextField value={email} onInput={(e) => setEmail(e.target.value)} />
+        <TextField
+          variant="outlined"
+          value={email}
+          onInput={(e) => setEmail(e.target.value)}
+        />
 
         <Typography>Password</Typography>
         {errors.password ? (
           <Typography>{errors.password.message}</Typography>
         ) : null}
         <TextField
+          variant="outlined"
           value={[password]}
           onInput={(e) => setPassword(e.target.value)}
         />
 
         <Typography>Confirm Password</Typography>
         <TextField
+          variant="outlined"
           value={confirmPassword}
           onInput={(e) => setConfirmPassword(e.target.value)}
         />
