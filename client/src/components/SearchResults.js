@@ -1,35 +1,30 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
 
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-
 import Grid from "@material-ui/core/Grid";
+
+import DrinkModal from "./DrinkModal";
 
 function SearchResults(props) {
   const { results } = props;
   return (
     <div>
       <Card>
+        <DrinkModal results={results} />
         <CardContent>
           <Typography>Search Results</Typography>
-          <Grid container spacing={1}>
+          <Grid container>
             {results
-              ? results.map((drink, index) => {
+              ? results.map((drink) => {
                   return (
                     <Grid
                       container
-                      key={index}
+                      key={drink.idDrink}
                       direction="column"
                       style={{ width: 200 }}
-                    >
-                      <img
-                        src={drink.strDrinkThumb + "/preview"}
-                        alt={"blue"}
-                      />
-                      {drink.strDrink}
-                    </Grid>
+                    ></Grid>
                   );
                 })
               : null}
