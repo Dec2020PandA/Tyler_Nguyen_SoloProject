@@ -34,14 +34,6 @@ module.exports.getDrink = (request, response) => {
     .catch((err) => response.json(err));
 };
 
-module.exports.updateDrink = (request, response) => {
-  Drink.findOneAndUpdate({ _id: request.params.id }, request.body, {
-    new: true,
-  })
-    .then((updatedDrink) => response.json(updatedDrink))
-    .catch((err) => response.json(err));
-};
-
 module.exports.deleteDrink = (request, response) => {
   Drink.deleteOne({ _id: request.params.id })
     .then((deleteConfirmation) => response.json(deleteConfirmation))

@@ -4,6 +4,5 @@ module.exports = function (app) {
   app.post("/api/drink", DrinkController.createDrink);
   app.get("/api/drink", DrinkController.getAllDrinks);
   app.get("/api/drink/:id", DrinkController.getDrink);
-  app.put('/api/drink/:id', DrinkController.updateDrink);
   app.delete('/api/drink/:id', DrinkController.deleteDrink);
 };

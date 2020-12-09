@@ -1,11 +1,18 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { User } = require("../models/user.model");
+const secret = process.env.SECRET_KEY;
 
 module.exports.getAll = (req, res) => {
   User.find({})
     .then((users) => res.json(users))
-    .cathch((err) => res.json(err));
+    .catch((err) => res.json(err));
+};
+
+module.exports.getUser = (req, res) => {
+  User.find({ _id: req.params.id })
+    .then((user) => res.json(user))
+    .catch((err) => res.json(err));
 };
 
 module.exports.register = (req, res) => {
