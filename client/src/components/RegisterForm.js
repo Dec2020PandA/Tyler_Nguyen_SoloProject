@@ -33,7 +33,7 @@ function RegisterForm() {
           setErrors(res.data.errors);
           console.log(res.data.errors);
         } else {
-          navigate("/login");
+          navigate("/");
         }
       })
       .catch((err) => console.log(err));
@@ -86,7 +86,7 @@ function RegisterForm() {
           value={confirmPassword}
           onInput={(e) => setConfirmPassword(e.target.value)}
         />
-        <Link to="/login">
+        <Link to="/">
           <Typography>Click here if you already have an account</Typography>
         </Link>
         <SubmitButton buttonTitle="Login" buttonColor="primary" />

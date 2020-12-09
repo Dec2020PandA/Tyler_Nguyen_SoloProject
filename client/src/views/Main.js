@@ -8,7 +8,7 @@ function Main() {
   return (
     <Router>
       <RegisterForm path="/register" />
-      <LoginForm path="/login" />
+      <LoginForm path="/" />
     </Router>
   );
 }
