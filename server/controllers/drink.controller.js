@@ -6,17 +6,9 @@ module.exports.index = (request, response) => {
 };
 
 module.exports.createDrink = (request, response) => {
-  const {
-    drinkId,
-    drinkName,
-    drinkIngredients,
-    drinkInstructions,
-  } = request.body;
+  const { drinkObject } = request.body;
   Drink.create({
-    drinkId,
-    drinkName,
-    drinkIngredients,
-    drinkInstructions,
+    drinkObject,
   })
     .then((drink) => response.json(drink))
     .catch((err) => response.json(err));
