@@ -4,7 +4,7 @@ import axios from "axios";
 import Button from "@material-ui/core/Button";
 
 function DrinkPage(props) {
-  const { drinkId, successCallback } = props;
+  const { drinkId, successCallback, test } = props;
   const deleteDrink = (e) => {
     axios
       .delete("http://localhost:8000/api/drink/delete" + drinkId)

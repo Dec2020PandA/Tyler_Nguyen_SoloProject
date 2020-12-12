@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "@reach/router";
+import { navigate } from "@reach/router";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -27,15 +27,17 @@ function Dashboard(props) {
       {drinks.map((drink, index) => {
         return (
           <div key={index}>
-            <Typography>{drink.strDrink}</Typography>
-            <Link
-              to={"/" + drink.strDrink + "/details"}
+            <Typography>{drink.drinkObject.strDrink}</Typography>
+            <Button
+              onClick={() => {
+                navigate("/" + drink.drinkObject.idDrink + "/details");
+              }}
               successCallback={() => removeFromDom(drink._id)}
+              variant="contained"
+              color="secondary"
             >
-              <Button variant="contained" color="secondary">
-                Details
-              </Button>
-            </Link>
+              Details
+            </Button>
           </div>
         );
       })}
