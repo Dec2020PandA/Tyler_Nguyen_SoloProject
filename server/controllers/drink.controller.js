@@ -5,6 +5,11 @@ module.exports.index = (request, response) => {
   });
 };
 
+const strDrinkZHHANS = "strDrinkZH-HANS";
+const strDrinkZHHANT = "strDrinkZH-HANT";
+const strInstructionsZHHANS = "strInstructionsZH-HANS";
+const strInstructionsZHHANT = "strInstructionsZH-HANT";
+
 module.exports.createDrink = (request, response) => {
   const { drinkObject } = request.body;
   Drink.create({
@@ -15,7 +20,7 @@ module.exports.createDrink = (request, response) => {
 };
 
 module.exports.getAllDrinks = (request, response) => {
-  Drink.find({})
+  Drink.find({}, null, { sort: { name: 1 } })
     .then((drinks) => response.json(drinks))
     .catch((err) => response.json(err));
 };
