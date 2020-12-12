@@ -15,14 +15,13 @@ function DrinkSearch() {
       )
       .then((res) => {
         setResults(res.data.drinks);
-        console.log(results);
       });
   };
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   return (
     <div>
-      <Typography variant="h3">Search for a drink!</Typography>
+      <Typography>Search for a drink!</Typography>
       <form onSubmit={onSubmitHandler}>
         <TextField
           variant="outlined"

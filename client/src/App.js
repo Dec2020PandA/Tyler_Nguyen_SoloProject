@@ -4,7 +4,7 @@ import { Router } from "@reach/router";
 import Main from "./views/Main";
 import DrinkSearch from "./views/DrinkSearch";
 import Dashboard from "./views/Dashboard";
-import DrinkDetails from "./views/DrinkDetails";
+import DrinkPage from "./views/DrinkPage";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
         <Main default />
         <Dashboard path="dashboard" />
         <DrinkSearch path="/search" />
-        <DrinkDetails path="/:id/details" />
+        <DrinkPage path="/:id/details" />
       </Router>
     </div>
   );

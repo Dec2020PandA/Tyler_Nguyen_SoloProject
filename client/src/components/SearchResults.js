@@ -5,27 +5,20 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Grid from "@material-ui/core/Grid";
 
-import DrinkModal from "./DrinkModal";
+import DrinkDetail from "./DrinkDetail";
 
 function SearchResults(props) {
   const { results } = props;
+
   return (
     <div>
       <Card>
-        <DrinkModal results={results} />
         <CardContent>
           <Typography>Search Results</Typography>
           <Grid container>
             {results
-              ? results.map((drink) => {
-                  return (
-                    <Grid
-                      container
-                      key={drink.idDrink}
-                      direction="column"
-                      style={{ width: 200 }}
-                    ></Grid>
-                  );
+              ? results.map((drink, index) => {
+                  return <DrinkDetail drink={drink} key={index} />;
                 })
               : null}
           </Grid>
