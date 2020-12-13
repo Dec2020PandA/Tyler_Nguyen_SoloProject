@@ -21,7 +21,7 @@ function LoginForm() {
       )
       .then((res) => {
         console.log(res.data);
-        navigate("/search");
+        navigate("/dashboard");
       })
       .catch((err) => console.log(err));
   };

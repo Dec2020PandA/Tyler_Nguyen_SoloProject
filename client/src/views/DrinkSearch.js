@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import SubmitButton from "../components/SubmitButton";
 import SearchResults from "../components/SearchResults";
 
+import Header from "../components/Header";
+
 function DrinkSearch() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ function DrinkSearch() {
   const [results, setResults] = useState([]);
   return (
     <div>
+      <Header />
       <Typography>Search for a drink!</Typography>
       <form onSubmit={onSubmitHandler}>
         <TextField

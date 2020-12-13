@@ -4,6 +4,8 @@ import { navigate } from "@reach/router";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+import Header from "../components/Header";
+
 function Dashboard(props) {
   const [drinks, setDrinks] = useState([]);
   useEffect(() => {
@@ -17,22 +19,21 @@ function Dashboard(props) {
       });
   }, []);
 
-  const removeFromDom = (drinkId) => {
-    setDrinks(drinks.filter((d) => d._id !== drinkId));
-  };
-
   return (
     <div>
-      <Typography>dashboard</Typography>
+      <Header />
+      
       {drinks.map((drink, index) => {
         return (
           <div key={index}>
+            {console.log(drink._id)}
             <Typography>{drink.drinkObject.strDrink}</Typography>
             <Button
               onClick={() => {
-                navigate("/" + drink.drinkObject.idDrink + "/details");
+                navigate("/" + drink.drinkObject.idDrink + "/details", {
+                  state: { drinkId: drink._id },
+                });
               }}
-              successCallback={() => removeFromDom(drink._id)}
               variant="contained"
               color="secondary"
             >
