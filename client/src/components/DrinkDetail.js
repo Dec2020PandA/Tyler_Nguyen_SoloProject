@@ -3,9 +3,7 @@ import axios from "axios";
 import SubmitButton from "./SubmitButton";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
-
 import { navigate } from "@reach/router";
-import Header from "../components/Header";
 
 function DrinkModal(props) {
   const { drink } = props;
@@ -34,9 +32,8 @@ function DrinkModal(props) {
 
   return (
     <div>
-      <Header />
       <div onClick={handleOpen}>
-        <Grid container direction="column" style={{ width: 200 }}>
+        <Grid container direction="column" style={{ width: 200, margin: 15}}>
           <img src={drink.strDrinkThumb + "/preview"} alt={"blue"} />
           {drink.strDrink}
         </Grid>

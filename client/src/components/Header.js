@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../App.css";
 import axios from "axios";
 
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,11 +8,19 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import Snackbar from "@material-ui/core/Snackbar";
-
+import Divider from "@material-ui/core/Divider";
 import { navigate } from "@reach/router";
 import Alert from "@material-ui/lab/Alert";
 
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles({
+  text: {
+    color: "white",
+  },
+});
+
 function Header(props) {
+  const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -40,7 +49,7 @@ function Header(props) {
             navigate("/dashboard");
           }}
         >
-          <Typography>Drinks on Demand</Typography>
+          <Typography className={classes.text}>Drinks on Demand</Typography>
         </Button>
 
         <IconButton
@@ -48,7 +57,7 @@ function Header(props) {
             navigate("/search");
           }}
         >
-          <SearchIcon />
+          <SearchIcon className={classes.text} />
         </IconButton>
         <Button
           onClick={() => {
@@ -57,7 +66,7 @@ function Header(props) {
           variant="outlined"
           size="small"
         >
-          Log out
+          <Typography className={classes.text}>Log out</Typography>
         </Button>
       </Toolbar>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

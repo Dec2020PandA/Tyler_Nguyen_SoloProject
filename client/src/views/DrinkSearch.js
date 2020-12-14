@@ -8,7 +8,15 @@ import SearchResults from "../components/SearchResults";
 
 import Header from "../components/Header";
 
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles({
+  text: {
+    color: "white",
+  },
+});
+
 function DrinkSearch() {
+  const classes = useStyles();
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
@@ -27,9 +35,11 @@ function DrinkSearch() {
       <Typography>Search for a drink!</Typography>
       <form onSubmit={onSubmitHandler}>
         <TextField
+          className={classes.text}
           variant="outlined"
           value={searchTerm}
           onInput={(e) => setSearchTerm(e.target.value)}
+          inputProps={{ style: { backgroundColor: "white" } }}
         />
         <SubmitButton buttonTitle="Search" buttonColor="primary" />
       </form>

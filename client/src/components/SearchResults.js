@@ -12,10 +12,9 @@ function SearchResults(props) {
 
   return (
     <div>
-      <Card>
+      <Card style={{ backgroundColor: "#121212" }}>
         <CardContent>
-          <Typography>Search Results</Typography>
-          <Grid container>
+          <Grid container style={{ width: 1000, margin: "auto" }}>
             {results
               ? results.map((drink, index) => {
                   return <DrinkDetail drink={drink} key={index} />;
