@@ -4,8 +4,12 @@ import SubmitButton from "./SubmitButton";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
+import Typography from "@material-ui/core/Typography";
+
+import { useStyles } from "../css/GlobalStyles";
 
 function DrinkModal(props) {
+  const classes = useStyles();
   const { drink } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [drinkObject] = useState(drink);
@@ -33,9 +37,9 @@ function DrinkModal(props) {
   return (
     <div>
       <div onClick={handleOpen}>
-        <Grid container direction="column" style={{ width: 200, margin: 15}}>
+        <Grid container direction="column" style={{ width: 200, margin: 15 }}>
           <img src={drink.strDrinkThumb + "/preview"} alt={"blue"} />
-          {drink.strDrink}
+          <Typography className={classes.text}>{drink.strDrink}</Typography>
         </Grid>
       </div>
       <Modal open={isOpen} onClose={handleClose}>

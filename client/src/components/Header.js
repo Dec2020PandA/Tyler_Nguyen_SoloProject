@@ -8,16 +8,10 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import Snackbar from "@material-ui/core/Snackbar";
-import Divider from "@material-ui/core/Divider";
 import { navigate } from "@reach/router";
 import Alert from "@material-ui/lab/Alert";
 
-import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles({
-  text: {
-    color: "white",
-  },
-});
+import { useStyles } from "../css/GlobalStyles";
 
 function Header(props) {
   const classes = useStyles();
