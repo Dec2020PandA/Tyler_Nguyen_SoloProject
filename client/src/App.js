@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Router>
         <Main default />
-        <Dashboard path="/dashboard" />
-        <DrinkSearch path="/search" />
+        <Dashboard path="/user/:id/dashboard" />
+        <DrinkSearch path="/user/:id/search" />
         <DrinkPage path="/:id/details" />
       </Router>
     </div>

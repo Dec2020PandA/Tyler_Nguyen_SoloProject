@@ -11,6 +11,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { navigate } from "@reach/router";
 import Alert from "@material-ui/lab/Alert";
 import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 import { useStyles } from "../css/GlobalStyles";
 
 function Header(props) {
@@ -38,31 +39,45 @@ function Header(props) {
   return (
     <div>
       <Toolbar className={classes.toolbar}>
-        <Button
-          onClick={() => {
-            navigate("/dashboard");
-          }}
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          style={{ width: "100%" }}
         >
-          <Typography className={classes.text}>Drinks on Demand</Typography>
-        </Button>
-
-        <IconButton
-          onClick={() => {
-            navigate("/search");
-          }}
-        >
-          <SearchIcon className={classes.text} />
-        </IconButton>
-        <Button
-          onClick={() => {
-            handleLogout();
-          }}
-          variant="outlined"
-          size="small"
-          className={classes.logout}
-        >
-          <Typography className={classes.text}>Log out</Typography>
-        </Button>
+          <Grid item>
+            <Button
+              onClick={() => {
+                navigate(`/user/${props.id}/dashboard`);
+              }}
+            >
+              <Typography className={classes.text}>Drinks on Demand</Typography>
+            </Button>
+          </Grid>
+          <Grid item>
+            {" "}
+            <IconButton
+              onClick={() => {
+                navigate(`/user/${props.id}/search`, {
+                  state: { id: props.id },
+                });
+              }}
+            >
+              <SearchIcon className={classes.text} />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={() => {
+                handleLogout();
+              }}
+              size="small"
+              className={classes.logout}
+            >
+              <Typography className={classes.text}>Log out</Typography>
+            </Button>
+          </Grid>
+        </Grid>
       </Toolbar>
       <Divider className={classes.divider} />
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

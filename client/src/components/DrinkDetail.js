@@ -6,13 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
 import Typography from "@material-ui/core/Typography";
 
-import IngredientDialog from "./IngredientDialog";
-
 import { useStyles } from "../css/GlobalStyles";
 
 function DrinkDetail(props) {
   const classes = useStyles();
-  const { drink } = props;
+  const { drink, isDisabled } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [drinkObject] = useState(drink);
 
@@ -21,7 +19,7 @@ function DrinkDetail(props) {
     axios
       .post("http://localhost:8000/api/drink/create", { drinkObject })
       .then((res) => {
-        navigate("/dashboard");
+        navigate(`/user/${props.id}/dashboard`);
       })
       .catch((err) => {
         console.log(err);
@@ -37,59 +35,87 @@ function DrinkDetail(props) {
   };
 
   return (
-    <div>
-      <div onClick={handleOpen}>
-        <Grid container direction="column" style={{ width: 200, margin: 25 }}>
-          <img src={drink.strDrinkThumb + "/preview"} alt={"blue"} />
-          <Typography className={classes.text} style={{ marginTop: 15 }}>
-            {drink.strDrink}
-          </Typography>
-        </Grid>
-      </div>
-
+    <React.Fragment>
       <div>
-        <Modal className={classes.modal} open={isOpen} onClose={handleClose}>
-          <form
-            onSubmit={createDrink}
-            style={{ outline: "none", height: 600, width: 600 }}
-          >
-            <Grid style={{ margin: 10 }}>
-              <Grid container direction="row">
-                <img
-                  src={drink.strDrinkThumb + "/preview"}
-                  alt={"blue"}
-                  style={{ height: 250, width: 250 }}
-                />
-                <Grid style={{ marginLeft: 10, width: 320 }}>
-                  <Typography style={{ fontSize: 25 }}>
-                    {drink.strDrink}
-                  </Typography>
-                  <Typography style={{ fontSize: 15 }}>
-                    Type: {drink.strCategory}
-                  </Typography>
-                  <Grid style={{ marginTop: 15, width: 320, height: 180 }}>
-                    {Object.keys(drink)
-                      .filter((ing) => ing.includes("strIngredient"))
-                      .map((x) => (
-                        <Typography>{drink[x]}</Typography>
-                      ))}
+        <div onClick={handleOpen}>
+          <Grid container direction="column" style={{ width: 200, margin: 25 }}>
+            <img src={drink.strDrinkThumb + "/preview"} alt={"blue"} />
+            <Typography className={classes.text} style={{ marginTop: 15 }}>
+              {drink.strDrink}
+            </Typography>
+          </Grid>
+        </div>
+
+        <div>
+          <Modal className={classes.modal} open={isOpen} onClose={handleClose}>
+            <form
+              onSubmit={createDrink}
+              style={{ outline: "none", height: 600, width: 600 }}
+            >
+              <Grid
+                style={{
+                  height: 600,
+                  width: 600,
+                  padding: 15,
+                  display: "flex",
+                }}
+                direction="column"
+                container
+              >
+                {/* img/description */}
+                <Grid container item direction="row" style={{ width: 580 }}>
+                  <img
+                    src={drink.strDrinkThumb + "/preview"}
+                    alt={"blue"}
+                    style={{ height: 250, width: 250 }}
+                  />
+                  <Grid style={{ marginLeft: 10, width: 320 }}>
+                    <Typography style={{ fontSize: 25 }}>
+                      {drink.strDrink}
+                    </Typography>
+                    <Typography style={{ fontSize: 15 }}>
+                      Type: {drink.strCategory}
+                    </Typography>
+                    <Grid
+                      container
+                      style={{ marginTop: 15, width: 320, height: 180 }}
+                      direction="row"
+                    >
+                      <Grid item direction="column">
+                        {Object.keys(drink)
+                          .filter((ing) => ing.includes("strIngredient"))
+                          .map((x) => (
+                            <Typography>{drink[x]}</Typography>
+                          ))}
+                      </Grid>
+                      <Grid item direction="column" style={{ paddingLeft: 5 }}>
+                        {Object.keys(drink)
+                          .filter((ing) => ing.includes("strMeasure"))
+                          .map((x) => (
+                            <Typography>{drink[x]}</Typography>
+                          ))}
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
+                {/* instructions */}
+                <Grid item style={{ marginTop: 20, width: 580, height: 230 }}>
+                  <Typography>{drink.strInstructions}</Typography>
+                </Grid>
+                {/* submit button */}
+                <Grid container item style={{ width: 580 }} justify="flex-end">
+                  <SubmitButton
+                    buttonTitle="Add to favorite"
+                    buttonColor="primary"
+                    isDisabled={isDisabled}
+                  />
+                </Grid>
               </Grid>
-              <Grid style={{ marginTop: 10 }}>
-                <Typography>{drink.strInstructions}</Typography>
-              </Grid>
-              <Grid>
-                <SubmitButton
-                  buttonTitle="Add to favorite"
-                  buttonColor="primary"
-                />
-              </Grid>
-            </Grid>
-          </form>
-        </Modal>
+            </form>
+          </Modal>
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
