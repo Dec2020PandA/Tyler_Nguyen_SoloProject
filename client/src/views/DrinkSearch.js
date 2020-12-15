@@ -9,8 +9,9 @@ import Header from "../components/Header";
 
 import { useStyles } from "../css/GlobalStyles";
 
-function DrinkSearch() {
+function DrinkSearch(props) {
   const classes = useStyles();
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
@@ -18,25 +19,29 @@ function DrinkSearch() {
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchTerm
       )
       .then((res) => {
-          setResults(res.data.drinks);
-      });
+        setResults(res.data.drinks);
+      })
+      .catch((err) => console.log(err));
   };
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   return (
     <div>
-      <Header />
-      <form onSubmit={onSubmitHandler}>
+      <Header id={props.id} />
+      <form onSubmit={onSubmitHandler} style={{ margin: 10 }}>
         <TextField
-          className={classes.text}
+          type="text"
+          label="Search for a drink"
+          className={classes.textFieldInput}
           variant="outlined"
           value={searchTerm}
           onInput={(e) => setSearchTerm(e.target.value)}
-          inputProps={{className: classes.textFieldInput}}
+          inputProps={{ className: classes.textFieldInput }}
+          InputLabelProps={{ className: classes.textFieldLabelInput }}
         />
         <SubmitButton buttonTitle="Search" buttonColor="primary" />
       </form>
-      <SearchResults results={results} />
+      <SearchResults results={results} id={props.location.state.id} />
     </div>
   );
 }

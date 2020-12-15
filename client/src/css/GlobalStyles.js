@@ -6,7 +6,12 @@ export const useStyles = makeStyles({
   },
   textFieldInput: {
     width: 500,
-    backgroundColor: "white",
+    color: "white",
+    borderColor: 'white'
+  },
+  textFieldLabelInput: {
+    color: "white",
+    
   },
   toolbar: {
     display: "flex",
@@ -29,5 +34,9 @@ export const useStyles = makeStyles({
   modalForm: {
     width: 600,
     height: 600,
+  },
+  //LOGIN STYLES
+  loginTextField: {
+    color: "white",
   },
 });
