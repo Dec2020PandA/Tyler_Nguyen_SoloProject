@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Snackbar from "@material-ui/core/Snackbar";
 import { navigate } from "@reach/router";
 import Alert from "@material-ui/lab/Alert";
-
+import Divider from "@material-ui/core/Divider";
 import { useStyles } from "../css/GlobalStyles";
 
 function Header(props) {
@@ -37,7 +37,7 @@ function Header(props) {
   };
   return (
     <div>
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <Button
           onClick={() => {
             navigate("/dashboard");
@@ -59,10 +59,12 @@ function Header(props) {
           }}
           variant="outlined"
           size="small"
+          className={classes.logout}
         >
           <Typography className={classes.text}>Log out</Typography>
         </Button>
       </Toolbar>
+      <Divider className={classes.divider} />
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose}>Log out successful, redirecting...</Alert>
       </Snackbar>
