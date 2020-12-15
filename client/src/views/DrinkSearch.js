@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 import SubmitButton from "../components/SubmitButton";
 import SearchResults from "../components/SearchResults";
 
@@ -19,7 +18,7 @@ function DrinkSearch() {
         "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + searchTerm
       )
       .then((res) => {
-        setResults(res.data.drinks);
+          setResults(res.data.drinks);
       });
   };
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +26,6 @@ function DrinkSearch() {
   return (
     <div>
       <Header />
-      <Typography className={classes.text}>Search for a drink!</Typography>
       <form onSubmit={onSubmitHandler}>
         <TextField
           className={classes.text}
