@@ -15,6 +15,7 @@ export const useStyles = makeStyles({
   },
   toolbar: {
     display: "flex",
+    backgroundColor: '#333333'
   },
   logout: {
     justifyItems: "flex-end",
@@ -27,7 +28,7 @@ export const useStyles = makeStyles({
     position: "absolute",
     width: 600,
     height: 600,
-    backgroundColor: "#272822",
+    backgroundColor: "#212121",
     margin: "auto",
     color: "white",
   },

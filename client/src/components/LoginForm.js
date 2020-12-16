@@ -32,14 +32,15 @@ function LoginForm() {
   };
   return (
     <div>
-      <form onSubmit={handleLogin} style={{ width: "100%", height: "100%" }}>
+      <form onSubmit={handleLogin}>
         <Grid
           container
           direction="column"
           style={{
-            width: 400,
-            marginTop: 100,
+            width: 600,
             margin: "auto",
+            padding: 30,
+            backgroundColor: "#333333",
           }}
         >
           <Grid>
@@ -49,6 +50,8 @@ function LoginForm() {
             Sign in
           </Typography>
           <TextField
+            inputProps={{ className: classes.textFieldLabelInput }}
+            id="email"
             margin="normal"
             required
             label="Email Address"
@@ -57,6 +60,7 @@ function LoginForm() {
             onInput={(e) => setEmail(e.target.value)}
           />{" "}
           <TextField
+            inputProps={{ className: classes.textFieldLabelInput }}
             margin="normal"
             required
             label="Password"

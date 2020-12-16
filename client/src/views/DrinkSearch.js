@@ -4,6 +4,7 @@ import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import SubmitButton from "../components/SubmitButton";
 import SearchResults from "../components/SearchResults";
+import Grid from "@material-ui/core/Grid";
 
 import Header from "../components/Header";
 
@@ -28,19 +29,21 @@ function DrinkSearch(props) {
   return (
     <div>
       <Header id={props.id} />
-      <form onSubmit={onSubmitHandler} style={{ margin: 10 }}>
-        <TextField
-          type="text"
-          label="Search for a drink"
-          className={classes.textFieldInput}
-          variant="outlined"
-          value={searchTerm}
-          onInput={(e) => setSearchTerm(e.target.value)}
-          inputProps={{ className: classes.textFieldInput }}
-          InputLabelProps={{ className: classes.textFieldLabelInput }}
-        />
-        <SubmitButton buttonTitle="Search" buttonColor="primary" />
-      </form>
+      <Grid style={{ backgroundColor: "#212121" }}>
+        <form onSubmit={onSubmitHandler} style={{ padding: 30}}>
+          <TextField
+            type="text"
+            label="Search for a drink"
+            className={classes.textFieldInput}
+            variant="outlined"
+            value={searchTerm}
+            onInput={(e) => setSearchTerm(e.target.value)}
+            inputProps={{ className: classes.textFieldInput }}
+            InputLabelProps={{ className: classes.textFieldLabelInput }}
+          />
+          <SubmitButton buttonTitle="Search" buttonColor="primary" />
+        </form>
+      </Grid>
       <SearchResults results={results} id={props.location.state.id} />
     </div>
   );
