@@ -9,13 +9,15 @@ function SearchResults(props) {
   const classes = useStyles();
   const { results } = props;
 
+  // marginTop: 50,
+  // paddingBottom: 100,
+
   return (
     <div>
       <Grid
         style={{
-          backgroundColor: "#121212",
-          marginTop: 50,
-          paddingBottom: 100,
+          backgroundColor: "#212121",
+          minHeight: 800
         }}
       >
         <Grid container style={{ width: 1000, margin: "auto" }}>

@@ -5,6 +5,7 @@ import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
 import { navigate } from "@reach/router";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 
 import { useStyles } from "../css/GlobalStyles";
 
@@ -37,15 +38,14 @@ function DrinkDetail(props) {
   return (
     <React.Fragment>
       <div>
-        <div onClick={handleOpen}>
-          <Grid container direction="column" style={{ width: 200, margin: 25 }}>
+        <Grid container direction="column" style={{ width: 200, margin: 25 }}>
+          <div onClick={handleOpen}>
             <img src={drink.strDrinkThumb + "/preview"} alt={"blue"} />
             <Typography className={classes.text} style={{ marginTop: 15 }}>
               {drink.strDrink}
             </Typography>
-          </Grid>
-        </div>
-
+          </div>
+        </Grid>
         <div>
           <Modal className={classes.modal} open={isOpen} onClose={handleClose}>
             <form
@@ -88,7 +88,7 @@ function DrinkDetail(props) {
                             <Typography>{drink[x]}</Typography>
                           ))}
                       </Grid>
-                      <Grid item direction="column" style={{ paddingLeft: 5 }}>
+                      <Grid item direction="column" style={{ paddingLeft: 10 }}>
                         {Object.keys(drink)
                           .filter((ing) => ing.includes("strMeasure"))
                           .map((x) => (

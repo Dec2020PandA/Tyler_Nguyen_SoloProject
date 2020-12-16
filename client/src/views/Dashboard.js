@@ -6,12 +6,15 @@ import Header from "../components/Header";
 import Grid from "@material-ui/core/Grid";
 
 import DrinkDetail from "../components/DrinkDetail";
-import { Typography } from "@material-ui/core";
+import { Typography, Switch } from "@material-ui/core";
+import DeleteButton from "../components/DeleteButton";
 
 function Dashboard(props) {
   const classes = useStyles();
   const [drinks, setDrinks] = useState([]);
   const [user, setUser] = useState({});
+  const [toggleDelete, setToggleDelete] = useState("");
+  const [checked, setChecked] = useState(false);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/drink")
@@ -29,26 +32,49 @@ function Dashboard(props) {
       .catch((err) => console.log(err));
   }, []);
 
+  const removeFromDom = (drinkId) => {
+    setDrinks(drinks.filter((d) => d._id !== drinkId));
+  };
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+    if (toggleDelete === "") {
+      setToggleDelete("none");
+    } else {
+      setToggleDelete("");
+    }
+  };
+
   return (
     <div>
       <Header id={props.id} />
-      <Typography className={classes.text} style={{ margin: 10 }}>
-        {user.firstName}'s Favorite Drinks
-      </Typography>
       <Grid
-        style={{
-          backgroundColor: "#121212",
-          marginTop: 50,
-          paddingBottom: 100,
-        }}
+        style={{ backgroundColor: "#212121", paddingTop: 30, minHeight: 850 }}
       >
+        <Grid></Grid>
+        <Typography className={classes.text} style={{ fontSize: 40 }}>
+          {user.firstName}'s Favorite Drinks
+        </Typography>
+        <Grid style={{ marginLeft: "100vh" }}>
+          <Typography className={classes.text}>Delete Drinks</Typography>
+          <Switch
+            checked={checked}
+            onChange={handleChange}
+            name="toggleDelete"
+          />
+        </Grid>
         <Grid container style={{ width: 1000, margin: "auto" }}>
           {console.log(drinks)}
-          {drinks.length === 1 ? (
+          {drinks.length !== 0 ? (
             drinks.map((drink, index) => {
               return (
                 <Grid>
                   <DrinkDetail drink={drink.drinkObject} isDisabled={true} />
+                  <DeleteButton
+                    drinkId={drink._id}
+                    successCallback={() => removeFromDom(drink._id)}
+                    toggleDelete={toggleDelete}
+                  />
                 </Grid>
               );
             })
