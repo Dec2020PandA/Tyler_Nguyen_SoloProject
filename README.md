@@ -7,7 +7,7 @@ Giving drink lovers an outlet to search for new drinks and try new things at hom
 - Proper full stack implementation (CRUD) 
 ### P1
 - Iteractive UI, Material-UI
-- Access Cocktail DB API 
-- Add drinks to favorites list
+- Access Cocktail DB API/Parse results to DB
+- Add/delete drinks to/from favorites list
 ### P2
-- Chatbox/reviews for users to communicate about different drinks
+- View information about drinks (fetched from API) inside user friendly interaction
